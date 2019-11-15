@@ -27,3 +27,14 @@ echo " Percentage Memory availability => " $RESULT
 #echo $z
 #printf " Percentage is => %.2f\n" $z
 printf "\n"
+
+rfs=$(df -k /|awk '{print $5}'|tail -n1)
+echo " The Use% of root is => " $rfs
+#printf "\n"
+
+pct=$(df -k / |awk '{print $5}'|tail -n1|sed "s/\%/""/g")
+if [ $pct < 50 ]; then 
+echo " This is fine "
+printf "\n"
+fi
+
